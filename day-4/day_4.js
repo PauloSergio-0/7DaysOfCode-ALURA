@@ -2,10 +2,10 @@ function numero_aleatorio(min, max){
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-function verificar_MIN_MAX(min, max){
-
-    if(min >= max){
-        alert(`o numero minímo ${min} é maior ou igual que o máximo ${max}`);
+function restart(){
+    var restart= parseInt(prompt("Deseja jogar Novamente? 0 para sim e 1 para não"));
+    if(restart == 1){
+        alert("reiniciando o game!")
         return game_randomNunber();
     }
 }
@@ -31,15 +31,15 @@ function game_randomNunber(){
         let resposta_tentativas = tentativas > 1 ? "tentativas" : "tentativa";
         
         if(tentativas > 3){
-            alert(`Você perdeu!\nO número era ${num}`)
+            alert(`Você perdeu!\nO número era ${num}`);
             break;
         }
         let resposta = parseInt(prompt(`Qual é o número secreto de ${minNum} a ${maxNum}?`));
 
         if (resposta == num){
             
-            alert(`Parabéns você venceu! em ${tentativas} ${resposta_tentativas}`);
-            break;
+            alert(`Parabéns você venceu!\nEm ${tentativas} ${resposta_tentativas}.\nO numero é ${num}.`);
+            return restart();
         } else if (resposta <= num){
             alert(`O número deve ser maior`);
         } else{
